@@ -9,7 +9,7 @@ export const addTask = (evento) => {
 
 const createTask = (evento) => {
   evento.preventDefault();
-  const taskList = JSON.parse(localStore.getItem("tasks"))[]
+  const taskList = JSON.parse(localStore.getItem("tasks")) || [];
   console.log(taskList);
   const input = document.querySelector("[data-form-input]");
   const calendar = document.querySelector("[data-form-date]");
@@ -29,7 +29,9 @@ const createTask = (evento) => {
   };
 
   taskList.push(taskObj);
+
   localStorage.setItem("tasks", JSON.stringify(taskList));
+
   const titleTask = document.createElement("span");
   titleTask.classList.add("task");
   titleTask.innerText = value;
